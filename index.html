@@ -70,6 +70,7 @@
             background-color: #062f4a;
         }
 
+
         /* Medios queries para pantallas pequeñas (smartphones) */
         @media (max-width: 768px) {
             .certificado-container {
@@ -78,10 +79,13 @@
                 gap: 10px;
             }
 
-            .certificado-left,
-            .certificado-right {
-                flex: none;
-                /* Hace que cada bloque tome el 100% del ancho */
+            .certificado-left {
+                background-color: #f4f4f4;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                /* o ajustable según el diseño */
             }
         }
 
