@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="https://sisgesi.undc.edu.pe/sisgesi/public/images/logo_big.png" type="image/x-icon">
+
+    <title>Creador de Certificados
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <style>
+        /* Contenedor principal */
+        .certificado-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Diseño para la parte izquierda */
+        .certificado-left {
+            flex: 1;
+            /* Toma el 50% del espacio disponible */
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Diseño para la parte derecha */
+        .certificado-right {
+            flex: 1;
+            /* Toma el 50% del espacio disponible */
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo básico de formulario */
+        form label {
+            display: block;
+            margin: 8px 0 4px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #082656;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #062f4a;
+        }
+
+        /* Medios queries para pantallas pequeñas (smartphones) */
+        @media (max-width: 768px) {
+            .certificado-container {
+                flex-direction: column;
+                /* Hace que las secciones se apilen en pantallas pequeñas */
+                gap: 10px;
+            }
+
+            .certificado-left,
+            .certificado-right {
+                flex: none;
+                /* Hace que cada bloque tome el 100% del ancho */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-dark text-white py-2">
+        <!-- Logo y menú -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #082656;">
+
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="https://portal.undc.edu.pe/">
+                    <img src="https://portal.undc.edu.pe/wp-content/uploads/2022/11/logo-principal-letras-blancas-claro.png"
+                        alt="UNDC" height="100">
+                </a>
+
+                <!-- Botón para colapsar menú en móviles -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú de navegación -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- UNIVERSIDAD -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="universidadDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                UNIVERSIDAD
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="universidadDropdown">
+                                <li><a class="dropdown-item"
+                                        href="https://portal.undc.edu.pe/comision_organizadora/#1655742660971-7c58ac7e-d140">Comisión
+                                        Organizadora</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Otros ítems simples -->
+                        <li class="nav-item"><a class="nav-link"
+                                href="https://portal.undc.edu.pe/facultades/">FACULTADES</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://posgrado.undc.edu.pe/">POSGRADO</a></li>
+
+                        <!-- OFICINAS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="oficinasDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                OFICINAS
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="https://portal.undc.edu.pe/rectorado/">Rectorado</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://portal.undc.edu.pe/vicerrectorado-academico/">Vicerrectorado
+                                        Académico</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://portal.undc.edu.pe/investigacion">Vicerrectorado Investigación</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item dropdown-toggle" href="#">Consejo Universitario</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item"
+                                                href="https://portal.undc.edu.pe/defensoria-universitaria/">Defensoría
+                                                Universitaria</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- RECURSOS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="recursosDropdown"
+                                data-bs-toggle="dropdown">RECURSOS</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="https://repositorio.undc.edu.pe/home">Repositorio
+                                        Institucional</a></li>
+                                <li><a class="dropdown-item" href="https://aula.undc.edu.pe/">Campus Virtual</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://www.turnitin.com/login_page.asp?lang=es">Sistema Antiplagio</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.undc.edu.pe/biblioteca/">Biblioteca</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://portal.undc.edu.pe/sistemas-de-informacion/">Sistemas de
+                                        Información</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- TRANSPARENCIA -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">TRANSPARENCIA</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                        href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=15357&amp;id_tema=1&amp;ver=#.Xx5RUZ5KjIU">Portal
+                                        de Transparencia Estándar</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://portal.undc.edu.pe/transparencia-universitaria/">Transparencia
+                                        Universitaria</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- SERVICIOS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">SERVICIOS/CENTROS</a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="https://undc.edu.pe/idiomas/">Centro de Idioma</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://undc.edu.pe/cepre/">Centro
+                                        Preuniversitario</a></li>
+                                <li><a class="dropdown-item" href="https://sivireno.undc.edu.pe">Bolsa de Trabajo</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Logos adicionales -->
+        <div class="bg-light py-3">
+            <div class="container d-flex justify-content-evenly align-items-center flex-wrap">
+                <a href="https://reclamos.servicios.gob.pe/?institution_id=234">
+                    <img src="https://portal.undc.edu.pe/wp-content/uploads/2024/11/logo-libro-reclama.jpg"
+                        alt="Libro de Reclamaciones" height="60">
+                </a>
+                <a
+                    href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=15357&amp;id_tema=1&amp;ver=#.Xx5RUZ5KjIU">
+                    <img src="https://portal.undc.edu.pe/wp-content/uploads/2024/11/logo-pte.png"
+                        alt="Transparencia Estándar" height="60">
+                </a>
+                <a href="https://portal.undc.edu.pe/transparencia-universitaria">
+                    <img src="https://portal.undc.edu.pe/wp-content/uploads/2024/11/logo-ptu.jpg"
+                        alt="Transparencia Universitaria" height="60">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="certificado-container">
+        <div class="certificado-left">
+            <h2>Certificado</h2>
+            <div class="certificado-preview">
+                <!-- Este es el área que verá el estudiante en tiempo real -->
+                <p><strong>Estudiante:</strong> <span id="nombre-estudiante">Juan Pérez</span></p>
+                <p><strong>Carrera:</strong> <span id="carrera-estudiante">Ingeniería de Sistemas</span></p>
+                <p><strong>Fecha de emisión:</strong> <span id="fecha-certificado"></span></p>
+            </div>
+        </div>
+        <div class="certificado-right">
+            <h2>Datos del Estudiante</h2>
+            <form id="form-estudiante">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+
+                <label for="carrera">Carrera:</label>
+                <input type="text" id="carrera" name="carrera" placeholder="Ingresa tu carrera">
+
+                <!-- Puedes agregar más campos aquí si es necesario -->
+                <button type="submit">Generar Certificado</button>
+            </form>
+        </div>
+    </section>
+
+
+
+    <footer id="colophon" class="pt-5 pb-4"
+        style="background-color: #111111; color: #ffffff; border-top: 1px solid #111111;">
+
+        <div class="container">
+            <div class="row gy-4">
+
+                <!-- Logo y Contacto -->
+                <div class="col-md-5">
+                    <img src="https://portal.undc.edu.pe/wp-content/uploads/2022/11/logo-principal-letras-blancas-claro.png"
+                        alt="Logo UNDC" height="70" class="mb-3">
+                    <div class="small">
+                        <p><i class="fa fa-phone me-2"></i><a href="tel:949027044"
+                                class="text-light text-decoration-none">(+51) 949 027 044</a></p>
+                        <p><i class="fa fa-envelope me-2"></i><a href="mailto:tramite@undc.edu.pe"
+                                class="text-light text-decoration-none">tramite@undc.edu.pe</a></p>
+                    </div>
+
+                    <div class="mt-3">
+                        <h6 class="text-uppercase fw-bold">Dirección</h6>
+                        <ul class="list-unstyled small">
+                            <li><strong>Sede Académica:</strong> Av. Mariscal Benavides N° 1370 San Vicente - Cañete
+                            </li>
+                            <li><strong>Sede Administrativa:</strong> Mariano Ramos Dammert s/n Fdo. Ramos Parcela 4,
+                                San Vicente</li>
+                            <li><strong>Central:</strong> Jr. San Agustín 124 San Vicente de Cañete</li>
+                            <li><strong>CAMPUS UNDC:</strong> Pan. Sur- Km 139 Mz A Lte. 1 FDO. Don Luis - San Luis</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-3">
+                        <ul class="list-inline">
+                            <li class="list-inline-item me-3">
+                                <a href="https://facebook.com/Unicanete.peru" class="text-light fs-5"><i
+                                        class="fa fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://twitter.com/Unicanete" class="text-light fs-5"><i
+                                        class="fa fa-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Columnas de enlaces -->
+                <div class="col-md-2">
+                    <h6 class="text-uppercase fw-bold">Privacidad</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=15357#.ZFpUxnbMK3D"
+                                class="text-light text-decoration-none">Transparencia Estándar</a></li>
+                        <li><a href="https://portal.undc.edu.pe/transparencia-universitaria/"
+                                class="text-light text-decoration-none">Transparencia Universitaria</a></li>
+                        <li><a href="https://portal.undc.edu.pe/terminos-y-condiciones/"
+                                class="text-light text-decoration-none">Términos y Condiciones</a></li>
+                        <li><a href="https://portal.undc.edu.pe/pdatospersonales/"
+                                class="text-light text-decoration-none">Política de Privacidad</a></li>
+                        <li><a href="https://reclamos.servicios.gob.pe/?institution_id=234"
+                                class="text-light text-decoration-none">Libro de Reclamaciones</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h6 class="text-uppercase fw-bold">Académico</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="https://aula.undc.edu.pe/" class="text-light text-decoration-none">Campus
+                                Virtual</a></li>
+                        <li><a href="http://sivireno.undc.edu.pe/" class="text-light text-decoration-none">Sivireno</a>
+                        </li>
+                        <li><a href="https://biblioteca.undc.edu.pe/"
+                                class="text-light text-decoration-none">Biblioteca</a></li>
+                        <li><a href="https://www.turnitin.com/es" class="text-light text-decoration-none">Turnitin</a>
+                        </li>
+                        <li><a href="https://pmb.undc.edu.pe/index.php" class="text-light text-decoration-none">Sistema
+                                de Biblioteca</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-1">
+                    <h6 class="text-uppercase fw-bold">Carreras</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="https://portal.undc.edu.pe/administracion/"
+                                class="text-light text-decoration-none">Administración</a></li>
+                        <li><a href="https://portal.undc.edu.pe/adm-de-turismo-y-hoteleria/"
+                                class="text-light text-decoration-none">Turismo y Hotelería</a></li>
+                        <li><a href="https://portal.undc.edu.pe/agronomia/"
+                                class="text-light text-decoration-none">Agronomía</a></li>
+                        <li><a href="https://portal.undc.edu.pe/contabilidad/"
+                                class="text-light text-decoration-none">Contabilidad</a></li>
+                        <li><a href="https://portal.undc.edu.pe/ingenieria_de_sistemas/"
+                                class="text-light text-decoration-none">Ing. de Sistemas</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h6 class="text-uppercase fw-bold">UNDC</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="https://repositorio.undc.edu.pe/home"
+                                class="text-light text-decoration-none">Repositorio</a></li>
+                        <li><a href="https://portal.undc.edu.pe/investigacion"
+                                class="text-light text-decoration-none">Investigación</a></li>
+                        <li><a href="https://portal.undc.edu.pe/events/"
+                                class="text-light text-decoration-none">Eventos</a></li>
+                        <li><a href="https://portal.undc.edu.pe/convocatorias-3/"
+                                class="text-light text-decoration-none">Convocatorias</a></li>
+                        <li><a href="https://portal.undc.edu.pe/contactanos/"
+                                class="text-light text-decoration-none">Contáctanos</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
