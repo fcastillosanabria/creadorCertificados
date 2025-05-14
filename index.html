@@ -84,6 +84,24 @@
                 /* Hace que cada bloque tome el 100% del ancho */
             }
         }
+        .iframe-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 10 / 7; /* Esto asegura que el alto sea proporcional al ancho */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
     </style>
 </head>
 
@@ -224,12 +242,11 @@
     <section class="certificado-container">
         <div class="certificado-left">
             <h2>Certificado</h2>
-            <div class="certificado-preview">
-                <!-- Este es el área que verá el estudiante en tiempo real -->
-                <p><strong>Estudiante:</strong> <span id="nombre-estudiante">Juan Pérez</span></p>
-                <p><strong>Carrera:</strong> <span id="carrera-estudiante">Ingeniería de Sistemas</span></p>
-                <p><strong>Fecha de emisión:</strong> <span id="fecha-certificado"></span></p>
-            </div>
+            <div class="iframe-wrapper">
+                <iframe id="iframe-certificado" src="certificado.html"></iframe>
+              </div>
+              
+
         </div>
         <div class="certificado-right">
             <h2>Datos del Estudiante</h2>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificado</title>
+  <style>
+    html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  overflow: hidden;
+}  
+
+.contenedor-certificado {
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+    .certificado {
+      width: 1000px;
+      height: 700px;
+      background: white;
+      border: 10px solid #e6a418;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      padding: 40px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .titulo {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #082656;
+    }
+
+    .contenido {
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .nombre {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 20px 0;
+      text-decoration: underline;
+    }
+
+    .carrera {
+      font-size: 22px;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+
+    .fecha {
+      margin-top: 20px;
+    }
+
+    .firmas {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .firma {
+      width: 30%;
+    }
+
+    .firma-linea {
+      border-top: 1px solid #000;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor-certificado">
+    <div class="certificado" id="certificado">
+      <div class="titulo">CERTIFICADO</div>
+      <div class="contenido">
+        <p>La Universidad XYZ otorga el presente certificado a</p>
+        <div class="nombre" id="nombre">Juan Pérez</div>
+        <p>por haber culminado la carrera de</p>
+        <div class="carrera" id="carrera">Ingeniería de Sistemas</div>
+        <p class="fecha" id="fecha">13 de mayo de 2025</p>
+      </div>
+      <div class="firmas">
+        <div class="firma">
+          <div class="firma-linea"></div>
+          Presidente
+        </div>
+        <div class="firma">
+          <div class="firma-linea"></div>
+          Secretario General
+        </div>
+        <div class="firma">
+          <div class="firma-linea"></div>
+          Decano
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

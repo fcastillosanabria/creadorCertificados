@@ -19,3 +19,22 @@
     window.onload = function() {
         document.getElementById("fecha-certificado").innerText = obtenerFechaActual();
     };
+
+    document.getElementById('form-estudiante').addEventListener('submit', function(e) {
+        e.preventDefault();
+  
+        const nombre = document.getElementById('nombre').value;
+        const carrera = document.getElementById('carrera').value;
+  
+        const datos = { nombre, carrera };
+  
+        // Enviar datos al iframe
+        const iframe = document.getElementById('iframe-certificado');
+        iframe.contentWindow.postMessage(datos, '*'); // usar '*' o dominio exacto
+      });
+
+  const iframe = document.getElementById("iframe-certificado");
+  iframe.onload = function () {
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    iframe.style.height = doc.body.scrollHeight + "px";
+  };
