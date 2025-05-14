@@ -32,9 +32,3 @@
         const iframe = document.getElementById('iframe-certificado');
         iframe.contentWindow.postMessage(datos, '*'); // usar '*' o dominio exacto
       });
-
-  const iframe = document.getElementById("iframe-certificado");
-  iframe.onload = function () {
-    const doc = iframe.contentDocument || iframe.contentWindow.document;
-    iframe.style.height = doc.body.scrollHeight + "px";
-  };
