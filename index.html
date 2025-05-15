@@ -262,14 +262,33 @@
             <h2>Datos del Estudiante</h2>
             <form id="form-estudiante">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                <input type="text" id="nombre" name="nombre" class="form-control mb-3" placeholder="Ingresa tu nombre">
+              
+                <div class="row align-items-center mb-2">
+                  <div class="col-auto">
+                    <label for="carrera-select" class="col-form-label">Carrera:</label>
+                  </div>
+                  <div class="col">
 
-                <label for="carrera">Carrera:</label>
-                <input type="text" id="carrera" name="carrera" placeholder="Ingresa tu carrera">
-
-                <!-- Puedes agregar más campos aquí si es necesario -->
-                <button type="submit">Generar Certificado</button>
-            </form>
+                    <button type="button" id="btn-toggle-carrera" class="bg-success">¿Otra carrera?</button>
+                  </div>
+                </div>
+              
+                <select id="carrera-select" name="carrera" class="form-select mb-2">
+                  <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                  <option value="Agronomia">Agronomia</option>
+                  <option value="Administración">Administración</option>
+                  <option value="Contabilidad">Contabilidad</option>
+                  <option value="Administración de Hoteleria y Turismo">Administración de Hoteleria y Turismo</option>
+                  
+                </select>
+              
+                <input type="text" id="carrera-input" name="carrera" class="form-control mb-3"
+                  placeholder="Ingresa tu carrera personalizada" style="display: none;">
+              
+                  <button type="submit">Generar Certificado</button>
+              </form>
+              
         </div>
     </section>
 

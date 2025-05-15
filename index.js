@@ -1,34 +1,46 @@
-    // Función para obtener la fecha actual
-    function obtenerFechaActual() {
-        const hoy = new Date();
-        
-        // Obtenemos el día, mes y año
-        const dia = hoy.getDate();
-        const mes = hoy.getMonth() + 1;  // Los meses en JavaScript van de 0 a 11
-        const anio = hoy.getFullYear();
-        
-        // Aseguramos que el mes y el día tengan siempre dos dígitos (por ejemplo, 09, 05)
-        const diaFormateado = dia < 10 ? '0' + dia : dia;
-        const mesFormateado = mes < 10 ? '0' + mes : mes;
+  const nombreInput = document.getElementById('nombre');
+  const carreraSelect = document.getElementById('carrera-select');
+  const carreraInput = document.getElementById('carrera-input');
+  const toggleButton = document.getElementById('btn-toggle-carrera');
+  const iframe = document.getElementById('iframe-certificado');
 
-        // Formateamos la fecha como "DD/MM/AAAA"
-        return `${diaFormateado}/${mesFormateado}/${anio}`;
+  let usandoInputPersonalizado = false;
+
+  function enviarCampo(campo, valor) {
+    const mensaje = {};
+    mensaje[campo] = valor;
+    iframe.contentWindow.postMessage(mensaje, '*');
+  }
+
+  nombreInput.addEventListener('input', () => {
+    enviarCampo('nombre', nombreInput.value);
+  });
+
+  carreraSelect.addEventListener('change', () => {
+    if (!usandoInputPersonalizado) {
+      enviarCampo('carrera', carreraSelect.value);
     }
+  });
 
-    // Mostrar la fecha actual en el certificado
-    window.onload = function() {
-        document.getElementById("fecha-certificado").innerText = obtenerFechaActual();
-    };
+  carreraInput.addEventListener('input', () => {
+    if (usandoInputPersonalizado) {
+      enviarCampo('carrera', carreraInput.value);
+    }
+  });
 
-    document.getElementById('form-estudiante').addEventListener('submit', function(e) {
-        e.preventDefault();
-  
-        const nombre = document.getElementById('nombre').value;
-        const carrera = document.getElementById('carrera').value;
-  
-        const datos = { nombre, carrera };
-  
-        // Enviar datos al iframe
-        const iframe = document.getElementById('iframe-certificado');
-        iframe.contentWindow.postMessage(datos, '*'); // usar '*' o dominio exacto
-      });
+  toggleButton.addEventListener('click', () => {
+    usandoInputPersonalizado = !usandoInputPersonalizado;
+
+    if (usandoInputPersonalizado) {
+      carreraSelect.style.display = 'none';
+      carreraInput.style.display = 'block';
+      toggleButton.innerText = 'Carreras UNDC';
+      enviarCampo('carrera', carreraInput.value);
+      carreraInput.focus();
+    } else {
+      carreraInput.style.display = 'none';
+      carreraSelect.style.display = 'block';
+      toggleButton.innerText = '¿Otra carrera?';
+      enviarCampo('carrera', carreraSelect.value);
+    }
+  });
