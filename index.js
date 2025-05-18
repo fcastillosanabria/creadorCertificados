@@ -1,59 +1,59 @@
 
-  const form = document.getElementById('form-estudiante');
-  const toggleButton = document.getElementById('btn-toggle-carrera');
-  const carreraSelect = document.getElementById('carrera-select');
-  const carreraInput = document.getElementById('carrera-input');
-  const nombreInput = document.getElementById('nombre');
+const form = document.getElementById('form-estudiante');
+const toggleButton = document.getElementById('btn-toggle-carrera');
+const carreraSelect = document.getElementById('carrera-select');
+const carreraInput = document.getElementById('carrera-input');
+const nombreInput = document.getElementById('nombre');
 
-  const nombreError = document.getElementById('nombre-error');
-  const carreraError = document.getElementById('carrera-error');
-  const nombreContador = document.getElementById('nombre-contador');
-  const carreraContador = document.getElementById('carrera-contador');
+const nombreError = document.getElementById('nombre-error');
+const carreraError = document.getElementById('carrera-error');
+const nombreContador = document.getElementById('nombre-contador');
+const carreraContador = document.getElementById('carrera-contador');
 
-  const aceptarCheckbox = document.getElementById('aceptarTerminos');
-  const btnGenerar = document.getElementById('btnGenerar');
+const aceptarCheckbox = document.getElementById('aceptarTerminos');
+const btnGenerar = document.getElementById('btnGenerar');
 
-  let usandoInputPersonalizado = false;
+let usandoInputPersonalizado = false;
 
-  toggleButton.addEventListener('click', () => {
-    usandoInputPersonalizado = !usandoInputPersonalizado;
+toggleButton.addEventListener('click', () => {
+  usandoInputPersonalizado = !usandoInputPersonalizado;
 
-    if (usandoInputPersonalizado) {
-      carreraSelect.style.display = 'none';
-      carreraInput.style.display = 'block';
-      carreraInput.value = '';
-      toggleButton.innerText = 'Carreras UNDC';
-      carreraContador.style.display= 'block';
-      carreraInput.focus();
-    } else {
-      carreraContador.style.display= 'none';
-      carreraInput.style.display = 'none';
-      carreraSelect.style.display = 'block';
-      toggleButton.innerText = '¿Otra carrera?';
-      carreraError.style.display = 'none';
-      carreraInput.classList.remove('input-error');
-    }
-  });
-
-  function capitalizarPalabras(texto) {
-    return texto
-      .replace(/\s+/g, ' ')
-      .trim()
-      .split(' ')
-      .map(p => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase())
-      .join(' ');
+  if (usandoInputPersonalizado) {
+    carreraSelect.style.display = 'none';
+    carreraInput.style.display = 'block';
+    carreraInput.value = '';
+    toggleButton.innerText = 'Carreras UNDC';
+    carreraContador.style.display = 'block';
+    carreraInput.focus();
+  } else {
+    carreraContador.style.display = 'none';
+    carreraInput.style.display = 'none';
+    carreraSelect.style.display = 'block';
+    toggleButton.innerText = '¿Otra carrera?';
+    carreraError.style.display = 'none';
+    carreraInput.classList.remove('input-error');
   }
+});
 
-  function validarNombre(nombre) {
-    const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
-    return nombre.trim() !== '' && regex.test(nombre);
-  }
+function capitalizarPalabras(texto) {
+  return texto
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(' ')
+    .map(p => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase())
+    .join(' ');
+}
 
-  function validarCarreraPersonalizada(carrera) {
-    return carrera.trim() !== '';
-  }
+function validarNombre(nombre) {
+  const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+  return nombre.trim() !== '' && regex.test(nombre);
+}
 
-  // ✨ EVENTO INPUT PARA NOMBRE
+function validarCarreraPersonalizada(carrera) {
+  return carrera.trim() !== '';
+}
+
+// ✨ EVENTO INPUT PARA NOMBRE
 nombreInput.addEventListener('input', () => {
   let valorOriginal = nombreInput.value;
 
@@ -96,23 +96,23 @@ nombreInput.addEventListener('input', () => {
 });
 
 
-  // ✨ EVENTO INPUT PARA CARRERA PERSONALIZADA
+// ✨ EVENTO INPUT PARA CARRERA PERSONALIZADA
 carreraInput.addEventListener('input', () => {
   let valor = carreraInput.value;
 
-  // Si excede los 20 caracteres, cortar inmediatamente
-  if (valor.length > 20) {
-    valor = valor.slice(0, 20);
+  // Si excede los 50 caracteres, cortar inmediatamente
+  if (valor.length > 50) {
+    valor = valor.slice(0, 50);
     carreraInput.value = valor;
   }
 
   // Actualizar contador
   const longitud = valor.length;
   const carreraContador = document.getElementById('carrera-contador');
-  carreraContador.innerText = `${longitud}/20`;
+  carreraContador.innerText = `${longitud}/50`;
 
-  // Parpadeo al llegar a 20
-  if (longitud === 20) {
+  // Parpadeo al llegar a 50
+  if (longitud === 50) {
     carreraInput.classList.add('parpadeo');
     carreraContador.classList.add('parpadeo');
 
@@ -133,18 +133,18 @@ carreraInput.addEventListener('input', () => {
 });
 
 aceptarCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-      btnGenerar.disabled = false;
-      btnGenerar.style.opacity = '1';
-      btnGenerar.style.pointerEvents = 'auto';
-    } else {
-      btnGenerar.disabled = true;
-      btnGenerar.style.opacity = '0.5';
-      btnGenerar.style.pointerEvents = 'none';
-    }
-  });
+  if (this.checked) {
+    btnGenerar.disabled = false;
+    btnGenerar.style.opacity = '1';
+    btnGenerar.style.pointerEvents = 'auto';
+  } else {
+    btnGenerar.disabled = true;
+    btnGenerar.style.opacity = '0.5';
+    btnGenerar.style.pointerEvents = 'none';
+  }
+});
 
-  form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const nombreValido = validarNombre(nombreInput.value);
@@ -178,7 +178,7 @@ aceptarCheckbox.addEventListener('change', function () {
     fetch(`https://script.google.com/macros/s/AKfycbyG2dA5cIU-rgKe3D7S-3rQGt5g0sfyPpk3JxRtbqemfYstbwaid6P9bEEVKTI-wPKahQ/exec?nombre=${nombre}&carrera=${carrera}`)
       .then(response => response.json())
       .then(data => {
-        if(data.url){
+        if (data.url) {
           window.open(data.url, '_blank');
         } else {
           alert('Ocurrió un error al generar el certificado.');
